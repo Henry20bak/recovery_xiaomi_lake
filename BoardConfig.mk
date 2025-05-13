@@ -2,34 +2,14 @@
 # Copyright (C) 2014-2023 The Team Win LLC
 # SPDX-License-Identifier: Apache-2.0
 
-# For building with minimal manifest
-ALLOW_MISSING_DEPENDENCIES := true
-
 # Device Path
 DEVICE_PATH := device/xiaomi/lake
 
+# For building with minimal manifest
+ALLOW_MISSING_DEPENDENCIES := true
+
 # Build Hack
 BUILD_BROKEN_DUP_RULES := true
-
-# Virtual A/B
-ENABLE_VIRTUAL_AB := true
-
-AB_OTA_UPDATER := true
-
-# A/B updater updatable partitions list. Keep in sync with the partition list
-# with "_a" and "_b" variants in the device. Note that the vendor can add more
-# more partitions to this list for the bootloader and radio.
-AB_OTA_PARTITIONS += \
-    boot \
-    dtbo \
-    product \
-    system \
-    system_ext \
-    vbmeta \
-    vbmeta_system \
-    vbmeta_vendor \
-    vendor \
-    vendor_boot
 
 # Architecture
 TARGET_ARCH := arm64
@@ -71,9 +51,9 @@ BOARD_VENDOR_CMDLINE := bootopt=64S3,32N2,64N2
 BOARD_PAGE_SIZE           := 4096
 BOARD_BOOT_HEADER_VERSION := 4
 BOARD_KERNEL_BASE         := 0x40078000
-BOARD_KERNEL_OFFSET       := 0x0bc08000
+BOARD_KERNEL_OFFSET       := 0x00008000
 BOARD_RAMDISK_OFFSET      := 0x07c08000
-BOARD_TAGS_OFFSET         := 0x07c88000
+BOARD_TAGS_OFFSET         := 0x0bc08000
 BOARD_DTB_OFFSET          := 0x0bc08000
 
 TARGET_PREBUILT_DTB := $(DEVICE_PATH)/prebuilt/dtb.img
@@ -127,11 +107,6 @@ TARGET_USERIMAGES_USE_F2FS := true
 # Properties
 TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
 
-# Init
-TARGET_INIT_VENDOR_LIB := //$(DEVICE_PATH):libinit_lake
-TARGET_RECOVERY_DEVICE_MODULES := libinit_lake
-TARGET_PLATFORM_DEVICE_BASE := /devices/soc/
-
 # Recovery
 BOARD_HAS_LARGE_FILESYSTEM := true
 BOARD_HAS_NO_SELECT_BUTTON := true
@@ -145,65 +120,78 @@ BOARD_EXCLUDE_KERNEL_FROM_RECOVERY_IMAGE :=
 BOARD_MOVE_RECOVERY_RESOURCES_TO_VENDOR_BOOT := true
 BOARD_MOVE_GSI_AVB_KEYS_TO_VENDOR_BOOT :=
 
-# Crypto
-TW_INCLUDE_CRYPTO := false
-TW_INCLUDE_CRYPTO_FBE := false
-TW_INCLUDE_FBE_METADATA_DECRYPT := false
+# Hack: prevent anti rollback
 BOARD_USES_METADATA_PARTITION := true
-
-# Encryption
+TW_INCLUDE_FBE_METADATA_DECRYPT := true
+TW_USE_FSCRYPT_POLICY := 2
 PLATFORM_VERSION := 14
-PLATFORM_VERSION_LAST_STABLE := 14
+PLATFORM_VERSION_LAST_STABLE := $(PLATFORM_VERSION)
 PLATFORM_SECURITY_PATCH := 2099-12-31
 BOOT_SECURITY_PATCH := $(PLATFORM_SECURITY_PATCH)
 VENDOR_SECURITY_PATCH := $(PLATFORM_SECURITY_PATCH)
 
 # TWRP Configuration
-TARGET_RECOVERY_PIXEL_FORMAT := "BGRA_8888"
-RECOVERY_SDCARD_ON_DATA := true
+TW_THEME := portrait_hdpi
+TW_EXTRA_LANGUAGES := true
+TW_SCREEN_BLANK_ON_BOOT := true
+TW_INPUT_BLACKLIST := "hbtp_vm"
+TW_USE_TOOLBOX := true
+TW_INCLUDE_REPACKTOOLS := true
+TW_FRAMERATE := 90
+TW_EXCLUDE_APEX := true
+TW_ENABLE_QUICK_REBOOT := true
+TW_INCLUDE_NANO_EDITOR := true
+TW_INCLUDE_NANO := true
+TW_INCLUDE_TWRPAPP := true
+
+# Allows you to map a custom keycode for power button, takes in a number, usually three digits
+TW_CUSTOM_POWER_BUTTON := 107
+
+# Python
+TW_INCLUDE_PYTHON := true
+
+# Brightness Screen
+TW_NO_SCREEN_BLANK := true
 TW_BRIGHTNESS_PATH := "/sys/class/leds/lcd-backlight/brightness"
 TW_MAX_BRIGHTNESS := 2047
 TW_DEFAULT_BRIGHTNESS := 1200
-TW_INPUT_BLACKLIST := "hbtp_vm"
-TW_CUSTOM_CPU_TEMP_PATH := "/sys/class/thermal/thermal_zone28/temp"
-TW_EXCLUDE_APEX := true
 
-TW_BACKUP_EXCLUSIONS := /data/fonts/files
-
-# For USB OTG
+# USB Configuration
 TW_EXCLUDE_DEFAULT_USB_INIT := true
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /config/usb_gadget/g1/functions/mass_storage.usb0/lun.%d/file
+TW_HAS_MTP := true
 
-# Filesystem tools
-TW_INCLUDE_NTFS_3G := true
-TARGET_USES_MKE2FS := true
+# USB OTG
+TW_USB_STORAGE := true
 
-# Display
-TW_NO_SCREEN_BLANK := true
+# Support /data/media
+RECOVERY_SDCARD_ON_DATA := true
 
-# UI
-TW_THEME := portrait_hdpi
-TW_FRAMERATE := 60
-TW_STATUS_ICONS_ALIGN := center
-TW_CUSTOM_CPU_POS := 50
-TW_CUSTOM_CLOCK_POS := 300
-TW_CUSTOM_BATTERY_POS := 800
-
-# TWRP binaries tools
-TW_EXCLUDE_NANO := true
-TW_INCLUDE_LPDUMP := true
-TW_INCLUDE_LPTOOLS := true
-TW_INCLUDE_PYTHON := true
-TW_INCLUDE_RESETPROP := true
-
-# Debug
-TARGET_USES_LOGD := true
+# LOGCAT
+TARGET_USES_LOGD := true    
 TWRP_INCLUDE_LOGCAT := true
 
-# Haptics
-TW_SUPPORT_INPUT_AIDL_HAPTICS := true
+# Format Use MKE2FS
+TARGET_USES_MKE2FS := true
 
-# Use legacy code for battery readout
-TW_USE_LEGACY_BATTERY_SERVICES := true
+# FastbootD
+TW_INCLUDE_FASTBOOTD := true
+
+# Fuse
+TW_INCLUDE_NTFS_3G    := true
+TW_INCLUDE_FUSE_EXFAT := true
+TW_INCLUDE_FUSE_NTFS  := true
+
+# Crypto
+TW_INCLUDE_CRYPTO := true
+TW_INCLUDE_CRYPTO_FBE := true
+TW_PREPARE_DATA_MEDIA_EARLY := true
+
+# Libresetprop & resetprop
+TW_INCLUDE_LIBRESETPROP := true
+TW_INCLUDE_RESETPROP := true
 
 TW_LOAD_VENDOR_BOOT_MODULES := true
+
+# Maintainer
+TW_DEVICE_VERSION := Henry20bak
