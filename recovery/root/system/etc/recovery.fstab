@@ -8,6 +8,7 @@ system                                      /system         erofs      ro       
 system                                      /system         ext4       ro                                                                                                wait,slotselect,logical
 vendor                                      /vendor         erofs      ro                                                                                                wait,slotselect,logical
 vendor                                      /vendor         ext4       ro                                                                                                wait,slotselect,logical
+/dev/block/mapper/vendor                    /vendor         ext4       ro                                                                                                wait,logical
 product                                     /product        erofs      ro                                                                                                wait,slotselect,logical
 product                                     /product        ext4       ro                                                                                                wait,slotselect,logical
 system_ext                                  /system_ext     erofs      ro                                                                                                wait,slotselect,logical
