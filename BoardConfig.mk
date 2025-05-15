@@ -134,6 +134,7 @@ BOARD_EXCLUDE_KERNEL_FROM_RECOVERY_IMAGE := true
 BOARD_INCLUDE_RECOVERY_DTBO := true
 BOARD_VENDOR_RAMDISK_KERNEL_MODULES := $(wildcard $(DEVICE_PATH)/recovery/root/lib/modules/*)
 BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD := $(wildcard $(DEVICE_PATH)/recovery/root/lib/modules/*)
+BOARD_VENDOR_RAMDISK_KERNEL_MODULES_FILTER := modules.load modules.dep modules.alias modules.softdep
 
 # Vendor Modules
 TW_LOAD_VENDOR_MODULES := $(shell echo \"$(shell ls $(DEVICE_PATH)/recovery/root/lib/modules)\")
