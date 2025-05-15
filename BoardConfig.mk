@@ -69,21 +69,20 @@ BOARD_MKBOOTIMG_ARGS += --dtb_offset $(BOARD_DTB_OFFSET)
 # AVB
 BOARD_AVB_ENABLE := true
 
-# Crypto
-TW_INCLUDE_CRYPTO := true
-TW_INCLUDE_CRYPTO_FBE := true
-TW_INCLUDE_FBE_METADATA_DECRYPT := true
-TW_USE_FSCRYPT_POLICY := 2
-TW_FORCE_KEYMASTER_VER := true
-OF_DEFAULT_KEYMASTER_VERSION := 4.1
-TW_USE_FSCRYPT := true
+# Crypto (Temporarily Disabled)
+TW_INCLUDE_CRYPTO := false
+TW_INCLUDE_CRYPTO_FBE := false
+TW_INCLUDE_FBE_METADATA_DECRYPT := false
+TW_USE_FSCRYPT := false
+TW_USE_FSCRYPT_POLICY := 0
 
+# Comment out or remove the Additional Crypto configs section entirely
 # Additional Crypto configs
-TW_RECOVERY_ADDITIONAL_RELINK_LIBRARY_FILES += \
-    $(TARGET_OUT_SHARED_LIBRARIES)/libkeymaster4.so \
-    $(TARGET_OUT_SHARED_LIBRARIES)/libpuresoftkeymasterdevice.so \
-    $(TARGET_OUT_SHARED_LIBRARIES)/libkeymaster41.so \
-    $(TARGET_OUT_SHARED_LIBRARIES)/libkeymaster4support.so
+#TW_RECOVERY_ADDITIONAL_RELINK_LIBRARY_FILES += \
+#    $(TARGET_OUT_SHARED_LIBRARIES)/libkeymaster4.so \
+#    $(TARGET_OUT_SHARED_LIBRARIES)/libpuresoftkeymasterdevice.so \
+#    $(TARGET_OUT_SHARED_LIBRARIES)/libkeymaster41.so \
+#    $(TARGET_OUT_SHARED_LIBRARIES)/libkeymaster4support.so
 
 # Partitions configs
 BOARD_FLASH_BLOCK_SIZE := 262144
