@@ -132,9 +132,9 @@ TW_CLEAN_RAMDISK_FOR_BUILD := true
 # Vendor Boot
 BOARD_EXCLUDE_KERNEL_FROM_RECOVERY_IMAGE := true
 BOARD_INCLUDE_RECOVERY_DTBO := true
-BOARD_VENDOR_RAMDISK_KERNEL_MODULES := $(wildcard $(DEVICE_PATH)/recovery/root/lib/modules/*)
-BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD := $(wildcard $(DEVICE_PATH)/recovery/root/lib/modules/*)
-BOARD_VENDOR_RAMDISK_KERNEL_MODULES_FILTER := modules.load modules.dep modules.alias modules.softdep
+BOARD_VENDOR_RAMDISK_KERNEL_MODULES := $(filter-out %.alias %.dep %.load %.softdep,$(wildcard $(DEVICE_PATH)/recovery/root/lib/modules/*))
+BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD := $(filter-out %.alias %.dep %.load %.softdep,$(wildcard $(DEVICE_PATH)/recovery/root/lib/modules/*))
+TW_LOAD_VENDOR_MODULE_EXCLUDE_LIST := modules.alias modules.dep modules.softdep modules.load
 
 # Vendor Modules
 TW_LOAD_VENDOR_MODULES := $(shell echo \"$(shell ls $(DEVICE_PATH)/recovery/root/lib/modules)\")
