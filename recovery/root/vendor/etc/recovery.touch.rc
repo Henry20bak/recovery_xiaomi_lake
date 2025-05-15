@@ -1,0 +1,13 @@
+on init
+    mkdir /vendor/firmware 0777 root root
+    
+on fs
+    chmod 0666 /dev/input/event*
+    chmod 0666 /dev/mtk-tpd
+    chmod 0666 /dev/touch
+    chown system system /dev/touch
+    
+on boot
+    # Add this to ensure touch device is properly initialized
+    write /proc/touchpanel/double_tap 1
+    write /sys/devices/platform/mtk-tpd/double_tap_enable 1
