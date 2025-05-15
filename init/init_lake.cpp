@@ -63,3 +63,11 @@ void vendor_load_properties() {
         model_property_override("lake", "Redmi 14C");
     }
 }
+
+void init_first_stage(const char *source, unsigned int major, unsigned int minor) {
+    return;
+}
+
+extern "C" int debug_pagesize_set_pagesize(int fd, int target_page_size) {
+    return 0;
+}
