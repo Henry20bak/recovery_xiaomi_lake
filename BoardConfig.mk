@@ -129,6 +129,14 @@ TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
 TW_CLEAN_RAMDISK_FOR_BUILD := true
 
+# Recovery Vendor handling
+BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := ext4
+TARGET_COPY_OUT_VENDOR := vendor
+RECOVERY_VENDOR_MOUNT_PATH := /vendor
+BOARD_ROOT_EXTRA_SYMLINKS := \
+    /vendor/lib/dsp:/dsp \
+    /vendor/firmware:/firmware
+
 # Vendor Boot
 BOARD_EXCLUDE_KERNEL_FROM_RECOVERY_IMAGE := true
 BOARD_INCLUDE_RECOVERY_DTBO := true
