@@ -235,3 +235,29 @@ TW_SUPPORT_INPUT_AIDL_HAPTICS := true
 TW_SUPPORT_INPUT_AIDL_1_0 := true
 TW_USE_LEGACY_TOUCH := true
 TW_SUPPORT_INPUT_1_2_HAPTICS := true
+
+# MTK Hardware
+TW_FORCE_USE_BUSYBOX := true
+TW_INCLUDE_MTK_HARDWARE := true
+TARGET_RECOVERY_TOUCHSCREEN_WIDTH := 1080
+TARGET_RECOVERY_TOUCHSCREEN_HEIGHT := 2400
+TARGET_USES_MTK_HARDWARE := true
+TW_RECOVERY_TOUCH := true
+TARGET_RECOVERY_DEVICE_MODULES += libvndksupport.so
+TW_RECOVERY_ADDITIONAL_RELINK_LIBRARY_FILES += $(TARGET_OUT_SHARED_LIBRARIES)/libvndksupport.so
+
+# Touch Firmware Files
+TW_RECOVERY_ADDITIONAL_RELINK_FILES += \
+    $(TARGET_OUT_VENDOR)/firmware/focaltech_ts_fw_hkc.bin \
+    $(TARGET_OUT_VENDOR)/firmware/focaltech_fw_hkc.bin \
+    $(TARGET_OUT_VENDOR)/firmware/novatek_ts_hdl_txd_fw.bin \
+    $(TARGET_OUT_VENDOR)/firmware/novatek_ts_hdl_txd_mp.bin
+
+# MTK Touch Drivers
+TARGET_RECOVERY_DEVICE_MODULES += \
+    android.hardware.input.classifier@1.0.so \
+    android.hardware.input.common@1.0.so
+
+TW_RECOVERY_ADDITIONAL_RELINK_LIBRARY_FILES += \
+    $(TARGET_OUT_SHARED_LIBRARIES)/android.hardware.input.classifier@1.0.so \
+    $(TARGET_OUT_SHARED_LIBRARIES)/android.hardware.input.common@1.0.so
