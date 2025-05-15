@@ -1,30 +1,15 @@
-#
-# Copyright (C) 2025 The Android Open Source Project
-# Copyright (C) 2025 SebaUbuntu's TWRP device tree generator
-#
-# SPDX-License-Identifier: Apache-2.0
-#
-
 # Inherit from those products. Most specific first.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
-$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
-
-# Installs gsi keys into ramdisk, to boot a developer GSI with verified boot.
-$(call inherit-product, $(SRC_TARGET_DIR)/product/gsi_keys.mk)
-
-# Enable project quotas and casefolding for emulated storage without sdcardfs
-$(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
-
-# Inherit some common twrp stuff.
-$(call inherit-product, vendor/twrp/config/common.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base.mk)
 
 # Inherit from lake device
 $(call inherit-product, device/xiaomi/lake/device.mk)
 
+# Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := lake
 PRODUCT_NAME := twrp_lake
 PRODUCT_BRAND := Xiaomi
-PRODUCT_MODEL := lake
+PRODUCT_MODEL := Poco C75
 PRODUCT_MANUFACTURER := xiaomi
 
 PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
