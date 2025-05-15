@@ -7,7 +7,15 @@ on fs
     chmod 0666 /dev/touch
     chown system system /dev/touch
     
+service touch_modeset /system/bin/recovery-persist
+    user root
+    group root
+    oneshot
+    disabled
+    seclabel u:r:recovery:s0
+
 on boot
     # Add this to ensure touch device is properly initialized
     write /proc/touchpanel/double_tap 1
     write /sys/devices/platform/mtk-tpd/double_tap_enable 1
+    start touch_modeset
