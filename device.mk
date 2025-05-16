@@ -41,3 +41,11 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.fastboot@1.1-impl-mock \
     fastbootd
+
+# Crypto
+PRODUCT_PACKAGES += \
+    qcom_decrypt \
+    qcom_decrypt_fbe \
+    android.hardware.gatekeeper@1.0 \
+    android.hardware.keymaster@4.0 \
+    android.hardware.keymaster@4.1
