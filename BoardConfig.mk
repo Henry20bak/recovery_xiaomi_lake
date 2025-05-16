@@ -259,6 +259,14 @@ TW_RECOVERY_ADDITIONAL_RELINK_LIBRARY_FILES += \
     $(TARGET_OUT_SHARED_LIBRARIES)/libgui.so \
     $(TARGET_OUT_SHARED_LIBRARIES)/libtouchservice.so
 
+# Add missing dependencies for libinputflinger
+TARGET_RECOVERY_DEVICE_MODULES += \
+    libstatslog \
+    server_configurable_flags
+
+TW_RECOVERY_ADDITIONAL_RELINK_LIBRARY_FILES += \
+    $(TARGET_OUT_SHARED_LIBRARIES)/libstatslog.so
+
 # MTK Hardware flags
 TARGET_USES_MTK_HARDWARE := true
 MTK_HARDWARE := true
