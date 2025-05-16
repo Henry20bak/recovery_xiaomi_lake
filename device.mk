@@ -83,20 +83,21 @@ PRODUCT_PACKAGES += \
     server_configurable_flags.com.android.inputflinger \
     server_configurable_flags.lib
 
-# InputFlinger server flags
+# InputFlinger and dependencies
 PRODUCT_PACKAGES += \
-    server_configurable_flags.com.android.inputflinger.lib \
+    libinputflinger \
+    libgui \
+    libtouchservice \
+    libstatslog \
+    libstatslog.vendor \
+    server_configurable_flags \
+    server_configurable_flags.vendor \
+    server_configurable_flags.com.android.inputflinger \
     server_configurable_flags.com.android.inputflinger.recovery
 
-# Additional Android System Input packages
+# Additional libraries
 PRODUCT_PACKAGES += \
     android.system.input \
-    android.system.input.data
-
-# Soong namespaces
-PRODUCT_SOONG_NAMESPACES += \
-    $(LOCAL_PATH) \
-    frameworks/native/services/inputflinger \
-    hardware/google \
-    hardware/interfaces \
-    hardware/libhardware
+    android.system.input.data \
+    libstatslog.recovery \
+    server_configurable_flags.recovery
