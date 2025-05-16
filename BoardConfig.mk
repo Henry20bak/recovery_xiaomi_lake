@@ -284,16 +284,6 @@ SOONG_CONFIG_inputflinger_additional_libraries := \
     server_configurable_flags \
     server_configurable_flags.com.android.inputflinger
 
-# Make sure inputflinger namespace is properly declared
-PRODUCT_SOONG_NAMESPACES += \
-    $(LOCAL_PATH) \
-    frameworks/native/services/inputflinger
-
-PRODUCT_SOONG_NAMESPACES += \
-    hardware/google \
-    hardware/interfaces \
-    hardware/libhardware
-
 # MTK Hardware flags
 TARGET_USES_MTK_HARDWARE := true
 MTK_HARDWARE := true
@@ -306,3 +296,11 @@ TW_NO_USB_STORAGE := true
 TW_USE_MODEL_HARDWARE_ID_FOR_DEVICE_ID := true
 TW_INCLUDE_NTFS_3G := true
 TW_CUSTOM_CPU_TEMP_PATH := /sys/class/thermal/thermal_zone1/temp
+
+# Soong namespaces
+PRODUCT_SOONG_NAMESPACES += \
+    $(LOCAL_PATH) \
+    frameworks/native/services/inputflinger \
+    hardware/google \
+    hardware/interfaces \
+    hardware/libhardware
