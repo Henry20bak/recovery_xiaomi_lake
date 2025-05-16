@@ -79,10 +79,9 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PACKAGES += \
     libstatslog \
-    server_configurable_flags
-
-PRODUCT_PACKAGES += \
-    server_configurable_flags.com.android.inputflinger
+    server_configurable_flags \
+    server_configurable_flags.com.android.inputflinger \
+    server_configurable_flags.lib
 
 # InputFlinger server flags
 PRODUCT_PACKAGES += \
