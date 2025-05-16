@@ -77,12 +77,6 @@ PRODUCT_PACKAGES += \
     android.hardware.keymaster@4.1-service \
     android.hardware.keymaster@4.1-impl
 
-PRODUCT_PACKAGES += \
-    libstatslog \
-    server_configurable_flags \
-    server_configurable_flags.com.android.inputflinger \
-    server_configurable_flags.lib
-
 # InputFlinger and dependencies
 PRODUCT_PACKAGES += \
     libinputflinger \
