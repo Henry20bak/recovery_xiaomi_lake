@@ -244,7 +244,6 @@ RECOVERY_TOUCHSCREEN_FLIP_Y := true
 # Driver and Hardware Support
 TARGET_RECOVERY_DEVICE_MODULES += \
     libion \
-    libandroidicu \
     libdisplay \
     vendor.mediatek.hardware.videotelephony@1.0 \
     android.hardware.graphics.composer@2.1-impl
