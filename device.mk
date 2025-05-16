@@ -83,3 +83,13 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PACKAGES += \
     server_configurable_flags.com.android.inputflinger
+
+# InputFlinger server flags
+PRODUCT_PACKAGES += \
+    server_configurable_flags.com.android.inputflinger.lib \
+    server_configurable_flags.com.android.inputflinger.recovery
+
+# Additional Android System Input packages
+PRODUCT_PACKAGES += \
+    android.system.input \
+    android.system.input.data
