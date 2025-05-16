@@ -60,3 +60,10 @@ PRODUCT_PACKAGES += \
     libhardware \
     libhardware_legacy \
     libion.recovery
+
+# Touch drivers
+PRODUCT_PACKAGES += \
+    mtk_tpd \
+    libinputflinger \
+    libgui \
+    libtouchservice
