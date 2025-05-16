@@ -42,10 +42,21 @@ PRODUCT_PACKAGES += \
     android.hardware.fastboot@1.1-impl-mock \
     fastbootd
 
-# Crypto
+# Crypto and Hardware Support
 PRODUCT_PACKAGES += \
     qcom_decrypt \
     qcom_decrypt_fbe \
     android.hardware.gatekeeper@1.0 \
     android.hardware.keymaster@4.0 \
-    android.hardware.keymaster@4.1
+    android.hardware.keymaster@4.1 \
+    libion \
+    libandroidicu \
+    libdisplay \
+    vendor.mediatek.hardware.videotelephony@1.0 \
+    android.hardware.graphics.composer@2.1-impl
+
+# Additional Hardware Support
+PRODUCT_PACKAGES += \
+    libhardware \
+    libhardware_legacy \
+    libion.recovery
