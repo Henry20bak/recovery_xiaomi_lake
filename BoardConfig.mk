@@ -227,3 +227,21 @@ TW_SUPPORT_INPUT_1_2_HAPTICS := false
 # Touch
 TW_NO_SCREEN_BLANK := true
 TW_NO_SCREEN_TIMEOUT := true
+
+# Driver and Hardware Support
+TARGET_RECOVERY_DEVICE_MODULES += \
+    libion \
+    libandroidicu \
+    libdisplay \
+    vendor.mediatek.hardware.videotelephony@1.0 \
+    android.hardware.graphics.composer@2.1-impl
+
+TW_RECOVERY_ADDITIONAL_RELINK_LIBRARY_FILES += \
+    $(TARGET_OUT_SHARED_LIBRARIES)/libion.so \
+    $(TARGET_OUT_SHARED_LIBRARIES)/libandroidicu.so \
+    $(TARGET_OUT_SHARED_LIBRARIES)/libdisplay.so
+
+# MTK Hardware flags
+TARGET_USES_MTK_HARDWARE := true
+MTK_HARDWARE := true
+TARGET_RECOVERY_MTK_HARDWARE := true
