@@ -213,10 +213,10 @@ OF_UNBIND_SDCARD_F2FS := true
 OF_USE_GREEN_LED := 0
 
 # OrangeFox Crypto flags
-OF_SKIP_FBE_DECRYPTION := false
-OF_KEEP_DM_VERITY := false
-OF_DISABLE_FORCED_ENCRYPTION := false
-OF_DONT_PATCH_ENCRYPTED_DEVICE := false
+OF_SKIP_FBE_DECRYPTION := true
+OF_KEEP_DM_VERITY := true
+OF_DISABLE_FORCED_ENCRYPTION := false  # Keep encryption possible
+OF_DONT_PATCH_ENCRYPTED_DEVICE := false  # Allow patching for encryption
 
 # MTK Touch
 TW_SUPPORT_INPUT_AIDL_HAPTICS := false
