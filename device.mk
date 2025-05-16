@@ -69,3 +69,10 @@ PRODUCT_PACKAGES += \
     libinputflinger \
     libgui \
     libtouchservice
+
+# Crypto and Hardware Support
+PRODUCT_PACKAGES += \
+    android.hardware.gatekeeper@1.0-impl \
+    android.hardware.gatekeeper@1.0-service \
+    android.hardware.keymaster@4.1-service \
+    android.hardware.keymaster@4.1-impl
