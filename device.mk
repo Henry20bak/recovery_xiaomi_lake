@@ -50,7 +50,6 @@ PRODUCT_PACKAGES += \
     android.hardware.keymaster@4.0 \
     android.hardware.keymaster@4.1 \
     libion \
-    libdisplay \
     vendor.mediatek.hardware.videotelephony@1.0 \
     android.hardware.graphics.composer@2.1-impl
 
