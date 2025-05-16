@@ -153,6 +153,10 @@ TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
 TW_CLEAN_RAMDISK_FOR_BUILD := true
 
+# Recovery Host Tools
+TARGET_RECOVERY_HOST_MODULES += \
+    libandroidicu
+
 # Additional Recovery Configs
 TW_PREPARE_DATA_MEDIA_EARLY := true
 TW_NO_REBOOT_RECOVERY := true
