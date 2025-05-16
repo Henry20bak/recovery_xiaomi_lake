@@ -69,19 +69,18 @@ BOARD_MKBOOTIMG_ARGS += --dtb_offset $(BOARD_DTB_OFFSET)
 # AVB
 BOARD_AVB_ENABLE := true
 
-# Crypto
-TW_INCLUDE_CRYPTO := true
-TW_INCLUDE_CRYPTO_FBE := true
-TW_INCLUDE_FBE_METADATA_DECRYPT := true
-TW_USE_FSCRYPT := true
-TW_USE_FSCRYPT_POLICY := 2
+# Crypto (Disabled but with encryption support)
+TW_INCLUDE_CRYPTO := false
+TW_INCLUDE_CRYPTO_FBE := false
+TW_INCLUDE_FBE_METADATA_DECRYPT := false
+TW_USE_FSCRYPT := false
+TW_USE_FSCRYPT_POLICY := 0
 
-# Additional Crypto configs
-TW_RECOVERY_ADDITIONAL_RELINK_LIBRARY_FILES += \
-    $(TARGET_OUT_SHARED_LIBRARIES)/libkeymaster4.so \
-    $(TARGET_OUT_SHARED_LIBRARIES)/libpuresoftkeymasterdevice.so \
-    $(TARGET_OUT_SHARED_LIBRARIES)/libkeymaster41.so \
-    $(TARGET_OUT_SHARED_LIBRARIES)/libkeymaster4support.so
+# Additional flags for encryption support
+OF_KEEP_DM_VERITY_FORCED_ENCRYPTION := 1
+OF_SKIP_DECRYPTED_ADOPTED_STORAGE := 1
+OF_PATCH_AVB20 := 1
+OF_NO_RELOAD_AFTER_DECRYPTION := 1
 
 # Additional flags to help with booting
 OF_DONT_KEEP_LOG_HISTORY := true
