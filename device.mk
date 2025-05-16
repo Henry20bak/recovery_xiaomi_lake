@@ -80,3 +80,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libstatslog \
     server_configurable_flags
+
+PRODUCT_PACKAGES += \
+    server_configurable_flags.com.android.inputflinger
