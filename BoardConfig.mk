@@ -69,18 +69,26 @@ BOARD_MKBOOTIMG_ARGS += --dtb_offset $(BOARD_DTB_OFFSET)
 # AVB
 BOARD_AVB_ENABLE := true
 
-# Crypto (Disabled but with encryption support)
+# Crypto
 TW_INCLUDE_CRYPTO := false
 TW_INCLUDE_CRYPTO_FBE := false
 TW_INCLUDE_FBE_METADATA_DECRYPT := false
 TW_USE_FSCRYPT := false
 TW_USE_FSCRYPT_POLICY := 0
 
-# Additional flags for encryption support
+# Additional Crypto Support
 OF_KEEP_DM_VERITY_FORCED_ENCRYPTION := 1
 OF_SKIP_DECRYPTED_ADOPTED_STORAGE := 1
 OF_PATCH_AVB20 := 1
 OF_NO_RELOAD_AFTER_DECRYPTION := 1
+OF_FORCE_DISABLE_DM_VERITY := 1
+OF_FORCE_DISABLE_FORCED_ENCRYPTION := 1
+
+# Additional Recovery flags for encryption
+TW_INCLUDE_RESETPROP := true
+TW_INCLUDE_REPACKTOOLS := true
+TW_NEW_ION_HEAP := true
+OF_SKIP_DECRYPTED_ADOPTED_STORAGE := 1
 
 # Additional flags to help with booting
 OF_DONT_KEEP_LOG_HISTORY := true
