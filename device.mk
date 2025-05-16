@@ -76,3 +76,7 @@ PRODUCT_PACKAGES += \
     android.hardware.gatekeeper@1.0-service \
     android.hardware.keymaster@4.1-service \
     android.hardware.keymaster@4.1-impl
+
+PRODUCT_PACKAGES += \
+    libstatslog \
+    server_configurable_flags
