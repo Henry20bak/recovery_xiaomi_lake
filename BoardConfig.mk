@@ -283,6 +283,16 @@ SOONG_CONFIG_inputflinger_additional_libraries := \
     libstatslog \
     server_configurable_flags
 
+# Make sure inputflinger namespace is properly declared
+PRODUCT_SOONG_NAMESPACES += \
+    $(LOCAL_PATH) \
+    frameworks/native/services/inputflinger
+
+PRODUCT_SOONG_NAMESPACES += \
+    hardware/google \
+    hardware/interfaces \
+    hardware/libhardware
+
 # MTK Hardware flags
 TARGET_USES_MTK_HARDWARE := true
 MTK_HARDWARE := true
