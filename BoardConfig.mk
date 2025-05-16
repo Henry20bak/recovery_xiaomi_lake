@@ -281,7 +281,9 @@ SOONG_CONFIG_inputflinger += additional_libraries
 
 SOONG_CONFIG_inputflinger_additional_libraries := \
     libstatslog \
+    libstatslog.vendor \
     server_configurable_flags \
+    server_configurable_flags.vendor \
     server_configurable_flags.com.android.inputflinger
 
 # MTK Hardware flags
