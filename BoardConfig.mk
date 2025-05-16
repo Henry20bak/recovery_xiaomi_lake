@@ -272,7 +272,8 @@ TARGET_RECOVERY_DEVICE_MODULES += \
 
 BOARD_RECOVERY_ADDITIONAL_RELINK_FILES += \
     $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/libstatslog.so \
-    $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/server_configurable_flags.so
+    $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/server_configurable_flags.so \
+    $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/server_configurable_flags.com.android.inputflinger.so
 
 SOONG_CONFIG_inputflinger_additional_libraries := \
     libstatslog \
