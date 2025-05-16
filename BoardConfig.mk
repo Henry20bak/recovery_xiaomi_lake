@@ -281,7 +281,8 @@ SOONG_CONFIG_inputflinger += additional_libraries
 
 SOONG_CONFIG_inputflinger_additional_libraries := \
     libstatslog \
-    server_configurable_flags
+    server_configurable_flags \
+    server_configurable_flags.com.android.inputflinger
 
 # Make sure inputflinger namespace is properly declared
 PRODUCT_SOONG_NAMESPACES += \
