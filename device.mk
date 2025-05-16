@@ -41,8 +41,3 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.fastboot@1.1-impl-mock \
     fastbootd
-
-# Recovery Touch Support
-PRODUCT_PACKAGES += \
-    mtk_tpd_daemon \
-    libinput
