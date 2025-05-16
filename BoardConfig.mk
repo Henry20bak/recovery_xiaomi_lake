@@ -153,6 +153,11 @@ TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
 TW_CLEAN_RAMDISK_FOR_BUILD := true
 
+# Recovery Libraries
+BOARD_RECOVERY_LIBS += \
+    libstatslog \
+    server_configurable_flags
+
 # Recovery Host Tools
 TARGET_RECOVERY_HOST_MODULES += \
     libandroidicu
