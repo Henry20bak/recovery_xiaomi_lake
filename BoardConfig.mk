@@ -267,6 +267,15 @@ TARGET_RECOVERY_DEVICE_MODULES += \
 TW_RECOVERY_ADDITIONAL_RELINK_LIBRARY_FILES += \
     $(TARGET_OUT_SHARED_LIBRARIES)/libstatslog.so
 
+# Additional linker configurations for libinputflinger
+SOONG_CONFIG_NAMESPACES += inputflinger
+SOONG_CONFIG_inputflinger += \
+    additional_libraries
+
+SOONG_CONFIG_inputflinger_additional_libraries := \
+    libstatslog \
+    server_configurable_flags
+
 # MTK Hardware flags
 TARGET_USES_MTK_HARDWARE := true
 MTK_HARDWARE := true
