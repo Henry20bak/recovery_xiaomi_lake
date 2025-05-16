@@ -275,6 +275,10 @@ BOARD_RECOVERY_ADDITIONAL_RELINK_FILES += \
     $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/server_configurable_flags.so \
     $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/server_configurable_flags.com.android.inputflinger.so
 
+# Additional linker configurations for libinputflinger
+SOONG_CONFIG_NAMESPACES += inputflinger
+SOONG_CONFIG_inputflinger += additional_libraries
+
 SOONG_CONFIG_inputflinger_additional_libraries := \
     libstatslog \
     server_configurable_flags
