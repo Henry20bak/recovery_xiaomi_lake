@@ -236,10 +236,6 @@ TW_NO_SCREEN_TIMEOUT := true
 RECOVERY_TOUCHSCREEN_SWAP_XY := true
 RECOVERY_TOUCHSCREEN_FLIP_Y := true
 
-# Touch
-TW_NO_SCREEN_BLANK := true
-TW_NO_SCREEN_TIMEOUT := true
-
 # Driver and Hardware Support
 TARGET_RECOVERY_DEVICE_MODULES += \
     libion \
