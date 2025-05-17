@@ -81,17 +81,20 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libinputflinger \
     libgui \
-    libtouchservice \
+    libtouchservice
+
+# Stats and flags dependencies
+PRODUCT_PACKAGES += \
     libstatslog \
     libstatslog.vendor \
+    libstatslog_recovery \
     server_configurable_flags \
     server_configurable_flags.vendor \
-    server_configurable_flags.com.android.inputflinger \
-    server_configurable_flags.com.android.inputflinger.recovery
-
-# Additional libraries
-PRODUCT_PACKAGES += \
-    android.system.input \
-    android.system.input.data \
-    libstatslog.recovery \
     server_configurable_flags.recovery
+
+# Recovery specific dependencies
+RECOVERY_LIBRARY_SOURCE_FILES += \
+    $(TARGET_OUT_SHARED_LIBRARIES)/libstatslog.so \
+    $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/libstatslog.vendor.so \
+    $(TARGET_OUT_SHARED_LIBRARIES)/server_configurable_flags.so \
+    $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/server_configurable_flags.vendor.so
