@@ -285,6 +285,22 @@ SOONG_CONFIG_NAMESPACES += stats_log
 SOONG_CONFIG_stats_log += input_stats_log
 SOONG_CONFIG_stats_log_input_stats_log := true
 
+# Runtime paths for InputFlinger dependencies
+TARGET_RECOVERY_SYSTEM_LIBRARY_PATH += \
+    /vendor/lib64 \
+    /vendor/lib64/hw \
+    /system/lib64 \
+    /system/lib64/hw
+
+RECOVERY_LIBRARY_SOURCE_FILES += \
+    $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/libstatslog.vendor.so \
+    $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/server_configurable_flags.vendor.so \
+    $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/server_configurable_flags.inputflinger.so \
+    $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/libinputflinger.vendor.so
+
+RECOVERY_BINARY_SOURCE_FILES += \
+    $(TARGET_OUT_VENDOR_EXECUTABLES)/hw/vendor.inputflinger.service
+
 # MTK Hardware flags
 TARGET_USES_MTK_HARDWARE := true
 MTK_HARDWARE := true
