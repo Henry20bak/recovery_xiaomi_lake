@@ -138,6 +138,9 @@ TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
 # Init
 TARGET_INIT_VENDOR_LIB := libinit_lake
 
+# SEPolicy
+BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy
+
 # Recovery
 BOARD_HAS_LARGE_FILESYSTEM := true
 BOARD_USES_GENERIC_KERNEL_IMAGE := true
