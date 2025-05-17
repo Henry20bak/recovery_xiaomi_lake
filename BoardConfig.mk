@@ -106,6 +106,14 @@ TW_CRYPTO_REAL_BLKDEV := "/dev/block/platform/bootdevice/by-name/userdata"
 TW_CRYPTO_MNT_POINT := "/data"
 TW_CRYPTO_FS_OPTIONS := "nosuid,nodev,noatime,discard,noauto_da_alloc,data=ordered"
 
+# Additional Crypto Flags
+TW_INCLUDE_FDE := true
+TW_INCLUDE_FBE := true
+TW_FBE_SUPPORT := true
+TW_USE_MODEL_HARDWARE_ID_FOR_DEVICE_ID := true
+OF_FBE_METADATA_MOUNT_IGNORE := true
+OF_SKIP_DECRYPTED_ADOPTED_STORAGE := true
+
 # Additional flags to help with booting
 OF_DONT_KEEP_LOG_HISTORY := true
 OF_NO_SPLASH_CHANGE := true
