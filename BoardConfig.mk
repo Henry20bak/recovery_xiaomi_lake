@@ -77,6 +77,18 @@ TW_USE_FSCRYPT := true
 TW_USE_FSCRYPT_POLICY := 2
 TW_INCLUDE_CRYPTO_FDE := false
 
+TARGET_RECOVERY_DEVICE_MODULES += \
+    android.hardware.keymaster@4.0-service \
+    android.hardware.keymaster@4.1-service \
+    libkeymaster4 \
+    libkeymaster41 \
+    libpuresoftkeymasterdevice
+
+RECOVERY_LIBRARY_SOURCE_FILES += \
+    $(TARGET_OUT_SHARED_LIBRARIES)/libkeymaster4.so \
+    $(TARGET_OUT_SHARED_LIBRARIES)/libkeymaster41.so \
+    $(TARGET_OUT_SHARED_LIBRARIES)/libpuresoftkeymasterdevice.so
+
 # Additional Crypto Support
 OF_PATCH_AVB20 := 1
 OF_SKIP_DECRYPTED_ADOPTED_STORAGE := 1
