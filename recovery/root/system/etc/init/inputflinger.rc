@@ -1,8 +1,0 @@
-service vendor.inputflinger /system/bin/inputflinger
-    class core
-    user system
-    group input system
-    capabilities SYS_NICE
-    ioprio rt 4
-    task_profiles ProcessCapacityHigh HighPerformance
-    onrestart restart zygote
