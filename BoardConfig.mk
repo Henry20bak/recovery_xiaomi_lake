@@ -274,8 +274,14 @@ SOONG_CONFIG_NAMESPACES += inputflinger
 SOONG_CONFIG_inputflinger += additional_libraries
 
 SOONG_CONFIG_inputflinger_additional_libraries := \
-    libstatslog:libstatslog \
-    server_configurable_flags:server_configurable_flags
+    libstatslog:libstatslog.vendor \
+    server_configurable_flags:server_configurable_flags.vendor \
+    libinputflinger:libinputflinger.vendor
+
+# Enable stats logging for inputflinger
+SOONG_CONFIG_NAMESPACES += stats_log
+SOONG_CONFIG_stats_log += input_stats_log
+SOONG_CONFIG_stats_log_input_stats_log := true
 
 # MTK Hardware flags
 TARGET_USES_MTK_HARDWARE := true
