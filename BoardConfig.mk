@@ -248,11 +248,6 @@ TW_RECOVERY_ADDITIONAL_RELINK_LIBRARY_FILES += \
     $(TARGET_OUT_SHARED_LIBRARIES)/libion.so \
     $(TARGET_OUT_SHARED_LIBRARIES)/libandroidicu.so
 
-TW_RECOVERY_ADDITIONAL_RELINK_LIBRARY_FILES += \
-    $(TARGET_OUT_SHARED_LIBRARIES)/libinputflinger.so \
-    $(TARGET_OUT_SHARED_LIBRARIES)/libgui.so \
-    $(TARGET_OUT_SHARED_LIBRARIES)/libtouchservice.so
-
 # Additional configurations for libinputflinger
 TARGET_RECOVERY_DEVICE_MODULES += \
     libstatslog.vendor \
