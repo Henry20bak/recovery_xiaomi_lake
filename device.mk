@@ -77,12 +77,6 @@ PRODUCT_PACKAGES += \
     android.hardware.keymaster@4.1-service \
     android.hardware.keymaster@4.1-impl
 
-# InputFlinger and dependencies
-PRODUCT_PACKAGES += \
-    libinputflinger \
-    libgui \
-    libtouchservice
-
 # Stats and flags dependencies
 PRODUCT_PACKAGES += \
     libstatslog \
