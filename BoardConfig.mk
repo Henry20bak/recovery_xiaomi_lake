@@ -78,11 +78,11 @@ TW_USE_FSCRYPT_POLICY := 2
 TW_INCLUDE_CRYPTO_FDE := false
 
 # OrangeFox Crypto flags
-OF_SKIP_FBE_DECRYPTION := true        # Set to true to get initial boot
+OF_SKIP_FBE_DECRYPTION := false
 OF_KEEP_DM_VERITY := false
-OF_DISABLE_FORCED_ENCRYPTION := true   # Set to true for MTK
-OF_DONT_PATCH_ENCRYPTED_DEVICE := false
-OF_DISABLE_DM_VERITY := true          # Added for MTK devices
+OF_DISABLE_FORCED_ENCRYPTION := false
+OF_DONT_PATCH_ENCRYPTED_DEVICE := true
+OF_DISABLE_DM_VERITY := true
 OF_FORCE_DISABLE_DM_VERITY_FORCED_ENCRYPTION := true
 
 # Additional Crypto Support
