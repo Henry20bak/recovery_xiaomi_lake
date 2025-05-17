@@ -88,16 +88,18 @@ PRODUCT_PACKAGES += \
     server_configurable_flags.inputflinger
 
 # InputFlinger dependencies
-PRODUCT_PACKAGES += \
-    libstatslog \
-    libstatslog.vendor \
-    server_configurable_flags \
-    server_configurable_flags.vendor \
-    server_configurable_flags.inputflinger
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.input.stats_log=true \
+    ro.vendor.input.stats_log=true
 
-# Recovery specific dependencies
-RECOVERY_LIBRARY_SOURCE_FILES += \
-    $(TARGET_OUT_SHARED_LIBRARIES)/libstatslog.so \
-    $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/libstatslog.vendor.so \
-    $(TARGET_OUT_SHARED_LIBRARIES)/server_configurable_flags.so \
-    $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/server_configurable_flags.vendor.so
+PRODUCT_PACKAGES += \
+    libinputflinger \
+    libinputflinger.recovery \
+    libinputflinger.inputflinger \
+    libinputflinger.vendor
+
+PRODUCT_PACKAGES += \
+    libgui \
+    libgui.vendor \
+    libtouchservice \
+    libtouchservice.vendor
