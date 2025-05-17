@@ -70,42 +70,25 @@ BOARD_MKBOOTIMG_ARGS += --dtb_offset $(BOARD_DTB_OFFSET)
 BOARD_AVB_ENABLE := true
 
 # Crypto
-TW_INCLUDE_CRYPTO := false
-TW_INCLUDE_CRYPTO_FBE := false
-TW_INCLUDE_FBE_METADATA_DECRYPT := false
-TW_USE_FSCRYPT := false
-TW_USE_FSCRYPT_POLICY := 0
+TW_INCLUDE_CRYPTO := true
+TW_INCLUDE_CRYPTO_FBE := true
+TW_INCLUDE_FBE_METADATA_DECRYPT := true
+TW_USE_FSCRYPT := true
+TW_USE_FSCRYPT_POLICY := 2
 TW_INCLUDE_CRYPTO_FDE := false
 
 # OrangeFox Crypto flags
-OF_SKIP_FBE_DECRYPTION := true
+OF_SKIP_FBE_DECRYPTION := true        # Set to true to get initial boot
 OF_KEEP_DM_VERITY := false
-OF_DISABLE_FORCED_ENCRYPTION := true
+OF_DISABLE_FORCED_ENCRYPTION := true   # Set to true for MTK
 OF_DONT_PATCH_ENCRYPTED_DEVICE := false
+OF_DISABLE_DM_VERITY := true          # Added for MTK devices
 OF_FORCE_DISABLE_DM_VERITY_FORCED_ENCRYPTION := true
-
-TARGET_RECOVERY_DEVICE_MODULES += \
-    android.hardware.keymaster@4.0-service \
-    android.hardware.keymaster@4.1-service \
-    libkeymaster4 \
-    libkeymaster41 \
-    libpuresoftkeymasterdevice
-
-RECOVERY_LIBRARY_SOURCE_FILES += \
-    $(TARGET_OUT_SHARED_LIBRARIES)/libkeymaster4.so \
-    $(TARGET_OUT_SHARED_LIBRARIES)/libkeymaster41.so \
-    $(TARGET_OUT_SHARED_LIBRARIES)/libpuresoftkeymasterdevice.so
 
 # Additional Crypto Support
 OF_PATCH_AVB20 := 1
 OF_SKIP_DECRYPTED_ADOPTED_STORAGE := 1
 OF_NO_RELOAD_AFTER_DECRYPTION := true
-
-# OrangeFox Crypto flags
-OF_SKIP_FBE_DECRYPTION := false
-OF_KEEP_DM_VERITY := false
-OF_DISABLE_FORCED_ENCRYPTION := false
-OF_DONT_PATCH_ENCRYPTED_DEVICE := true
 
 # FBE Support
 TW_INCLUDE_LIBRESETPROP := true
