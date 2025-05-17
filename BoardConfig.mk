@@ -221,26 +221,28 @@ BOOT_SECURITY_PATCH := $(PLATFORM_SECURITY_PATCH)
 TARGET_RECOVERY_DEVICE_MODULES += \
     android.hardware.gatekeeper@1.0-impl \
     android.hardware.gatekeeper@1.0-service \
+    android.hardware.keymaster@4.0-service \
     android.hardware.keymaster@4.1-service \
+    libkeymaster4 \
+    libkeymaster41 \
+    libpuresoftkeymasterdevice \
     libashmemd_client \
     ashmemd \
     ashmemd_aidl_interface-cpp \
-    libashmemd_client \
     libicuuc \
     libion \
     libxml2 \
-    libgatekeeper \
-    libkeymaster41 \
-    libpuresoftkeymasterdevice
+    libgatekeeper
 
 RECOVERY_LIBRARY_SOURCE_FILES += \
     $(TARGET_OUT_SHARED_LIBRARIES)/libashmemd_client.so \
     $(TARGET_OUT_SHARED_LIBRARIES)/ashmemd_aidl_interface-cpp.so \
     $(TARGET_OUT_SHARED_LIBRARIES)/libicuuc.so \
     $(TARGET_OUT_SHARED_LIBRARIES)/libxml2.so \
-    $(TARGET_OUT_SHARED_LIBRARIES)/libgatekeeper.so \
+    $(TARGET_OUT_SHARED_LIBRARIES)/libkeymaster4.so \
     $(TARGET_OUT_SHARED_LIBRARIES)/libkeymaster41.so \
-    $(TARGET_OUT_SHARED_LIBRARIES)/libpuresoftkeymasterdevice.so
+    $(TARGET_OUT_SHARED_LIBRARIES)/libpuresoftkeymasterdevice.so \
+    $(TARGET_OUT_SHARED_LIBRARIES)/libgatekeeper.so
 
 # Additional Crypto Blobs
 TARGET_RECOVERY_DEVICE_MODULES += \
