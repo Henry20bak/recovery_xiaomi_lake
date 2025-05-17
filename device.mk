@@ -66,9 +66,9 @@ PRODUCT_PACKAGES += \
 # Touch drivers
 PRODUCT_PACKAGES += \
     mtk_tpd \
-    libinputflinger \
-    libgui \
-    libtouchservice
+    libinputflinger.vendor \
+    libgui.vendor \
+    libtouchservice.vendor
 
 # Crypto and Hardware Support
 PRODUCT_PACKAGES += \
