@@ -81,10 +81,11 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libstatslog \
     libstatslog.vendor \
-    libstatslog_recovery \
+    libstatslog.recovery \
     server_configurable_flags \
     server_configurable_flags.vendor \
-    server_configurable_flags.recovery
+    server_configurable_flags.recovery \
+    server_configurable_flags.com.android.inputflinger
 
 # Recovery specific dependencies
 RECOVERY_LIBRARY_SOURCE_FILES += \
