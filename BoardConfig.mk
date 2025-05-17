@@ -283,16 +283,6 @@ SOONG_CONFIG_inputflinger_additional_libraries := \
     server_configurable_flags.vendor \
     server_configurable_flags.com.android.inputflinger
 
-# Additional Recovery Relink Files
-BOARD_RECOVERY_ADDITIONAL_RELINK_FILES += \
-    $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/libstatslog.so \
-    $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/server_configurable_flags.so
-
-# Additional Recovery Libraries
-BOARD_RECOVERY_LIBS += \
-    libstatslog.vendor \
-    server_configurable_flags.vendor
-
 # MTK Hardware flags
 TARGET_USES_MTK_HARDWARE := true
 MTK_HARDWARE := true
