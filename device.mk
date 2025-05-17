@@ -85,7 +85,15 @@ PRODUCT_PACKAGES += \
     server_configurable_flags \
     server_configurable_flags.vendor \
     server_configurable_flags.recovery \
-    server_configurable_flags.com.android.inputflinger
+    server_configurable_flags.inputflinger
+
+# InputFlinger dependencies
+PRODUCT_PACKAGES += \
+    libstatslog \
+    libstatslog.vendor \
+    server_configurable_flags \
+    server_configurable_flags.vendor \
+    server_configurable_flags.inputflinger
 
 # Recovery specific dependencies
 RECOVERY_LIBRARY_SOURCE_FILES += \
