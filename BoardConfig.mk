@@ -279,9 +279,8 @@ SOONG_CONFIG_NAMESPACES += inputflinger
 SOONG_CONFIG_inputflinger += additional_libraries
 
 SOONG_CONFIG_inputflinger_additional_libraries := \
-    libstatslog.vendor \
-    server_configurable_flags.vendor \
-    server_configurable_flags.com.android.inputflinger
+    libstatslog:libstatslog \
+    server_configurable_flags:server_configurable_flags
 
 # MTK Hardware flags
 TARGET_USES_MTK_HARDWARE := true
