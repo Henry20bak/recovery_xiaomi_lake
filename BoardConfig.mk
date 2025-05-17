@@ -72,55 +72,15 @@ BOARD_AVB_ENABLE := true
 # Crypto
 TW_INCLUDE_CRYPTO := true
 TW_INCLUDE_CRYPTO_FBE := true
-TW_INCLUDE_FBE_METADATA_DECRYPT := true
-TW_USE_FSCRYPT := true
-TW_INCLUDE_CRYPTO_FDE := true
 TW_USE_FSCRYPT_POLICY := 2
-OF_DEFAULT_KEYMASTER_VERSION := 4.1
+TW_FORCE_KEYMASTER_VER := true
 
-# OrangeFox Crypto flags
-OF_SKIP_FBE_DECRYPTION := false
-OF_KEEP_DM_VERITY := false
-OF_DISABLE_FORCED_ENCRYPTION := true
-OF_DONT_PATCH_ENCRYPTED_DEVICE := false
-OF_DISABLE_DM_VERITY := true
-OF_FORCE_DISABLE_DM_VERITY_FORCED_ENCRYPTION := false
-
-# Additional Crypto Support
-OF_PATCH_AVB20 := 1
-OF_SKIP_DECRYPTED_ADOPTED_STORAGE := 1
-OF_NO_RELOAD_AFTER_DECRYPTION := true
-
-# FBE Support
-TW_INCLUDE_LIBRESETPROP := true
-TW_INCLUDE_RESETPROP := true
-TW_RECOVERY_ADDITIONAL_RELINK_LIBRARY_FILES += \
-    $(TARGET_OUT_SHARED_LIBRARIES)/libxml2.so
-
-# MTK Crypto
-TW_CRYPTO_USE_SYSTEM_VOLD := true
-TW_CRYPTO_SYSTEM_VOLD_MOUNT := "vendor"
-TW_CRYPTO_SYSTEM_VOLD_DEBUG := true
-TW_INCLUDE_CRYPTO_SYSTEM_PROP := true
-TW_CRYPTO_REAL_BLKDEV := "/dev/block/platform/bootdevice/by-name/userdata"
-TW_CRYPTO_MNT_POINT := "/data"
-TW_CRYPTO_FS_OPTIONS := "nosuid,nodev,noatime,discard,noauto_da_alloc,data=ordered"
-
-# Additional Crypto Flags
-TW_INCLUDE_FDE := true
-TW_INCLUDE_FBE := true
-TW_FBE_SUPPORT := true
-TW_USE_MODEL_HARDWARE_ID_FOR_DEVICE_ID := true
-OF_FBE_METADATA_MOUNT_IGNORE := true
-OF_SKIP_DECRYPTED_ADOPTED_STORAGE := true
-
-# Additional flags to help with booting
-OF_DONT_KEEP_LOG_HISTORY := true
-OF_NO_SPLASH_CHANGE := true
-OF_DISABLE_KEYMASTER2 := true
-OF_LEGACY_SHAR512 := true
-OF_NO_SAMSUNG_SPECIAL := true
-OF_USE_TWRP_SAR_DETECT := true
+# Platform Security
+PLATFORM_SECURITY_PATCH := 2099-12-31
+PLATFORM_VERSION := 99.87.36
+PLATFORM_VERSION_LAST_STABLE := $(PLATFORM_VERSION)
+VENDOR_SECURITY_PATCH := $(PLATFORM_SECURITY_PATCH)
+BOOT_SECURITY_PATCH := $(PLATFORM_SECURITY_PATCH)
 
 # Partitions configs
 BOARD_FLASH_BLOCK_SIZE := 262144
@@ -151,18 +111,6 @@ TARGET_COPY_OUT_VENDOR_DLKM := vendor_dlkm
 # Platform
 TARGET_BOARD_PLATFORM := mt6768
 
-# VNDK
-BOARD_VNDK_VERSION := current
-
-# Properties
-TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
-
-# Init
-TARGET_INIT_VENDOR_LIB := libinit_lake
-
-# SEPolicy
-BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy
-
 # Recovery
 BOARD_HAS_LARGE_FILESYSTEM := true
 BOARD_USES_GENERIC_KERNEL_IMAGE := true
@@ -175,78 +123,13 @@ TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery/root/system/etc/recovery.fstab
 TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
-TW_CLEAN_RAMDISK_FOR_BUILD := true
-
-# Recovery Host Tools
-TARGET_RECOVERY_HOST_MODULES += \
-    libandroidicu
-
-# Additional Recovery Configs
-TW_PREPARE_DATA_MEDIA_EARLY := true
-TW_NO_REBOOT_RECOVERY := true
-TW_NEVER_UNMOUNT_SYSTEM := true
-TW_SKIP_COMPATIBILITY_CHECK := true
-
-# Recovery Vendor handling
-BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := ext4
-TARGET_COPY_OUT_VENDOR := vendor
-RECOVERY_VENDOR_MOUNT_PATH := /vendor
-BOARD_ROOT_EXTRA_SYMLINKS := \
-    /vendor/lib/dsp:/dsp \
-    /vendor/firmware:/firmware
 
 # Vendor Boot
 BOARD_EXCLUDE_KERNEL_FROM_RECOVERY_IMAGE := true
-BOARD_INCLUDE_RECOVERY_DTBO := true
-BOARD_VENDOR_RAMDISK_KERNEL_MODULES := $(filter-out %.alias %.dep %.load %.softdep %.recovery,$(wildcard $(DEVICE_PATH)/recovery/root/lib/modules/*))
-BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD := $(filter-out %.alias %.dep %.load %.softdep %.recovery,$(wildcard $(DEVICE_PATH)/recovery/root/lib/modules/*))
-TW_LOAD_VENDOR_MODULE_EXCLUDE_LIST := modules.alias modules.dep modules.softdep modules.load modules.load.recovery
+BOARD_MOVE_RECOVERY_RESOURCES_TO_VENDOR_BOOT := true
 
 # Vendor Modules
-TW_LOAD_VENDOR_MODULES := $(shell echo \"$(shell ls $(DEVICE_PATH)/recovery/root/lib/modules)\")
-
-# Platform Security
-PLATFORM_SECURITY_PATCH := 2099-12-31
-VENDOR_SECURITY_PATCH := 2099-12-31
-PLATFORM_VERSION := 14.0.0
-PLATFORM_VERSION_LAST_STABLE := $(PLATFORM_VERSION)
-BOOT_SECURITY_PATCH := $(PLATFORM_SECURITY_PATCH)
-
-# Encryption Dependencies
-TARGET_RECOVERY_DEVICE_MODULES += \
-    android.hardware.gatekeeper@1.0-impl \
-    android.hardware.gatekeeper@1.0-service \
-    android.hardware.keymaster@4.0-service \
-    android.hardware.keymaster@4.1-service \
-    libkeymaster4 \
-    libkeymaster41 \
-    libpuresoftkeymasterdevice \
-    libashmemd_client \
-    ashmemd \
-    ashmemd_aidl_interface-cpp \
-    libicuuc \
-    libion \
-    libxml2 \
-    libgatekeeper
-
-RECOVERY_LIBRARY_SOURCE_FILES += \
-    $(TARGET_OUT_SHARED_LIBRARIES)/libashmemd_client.so \
-    $(TARGET_OUT_SHARED_LIBRARIES)/ashmemd_aidl_interface-cpp.so \
-    $(TARGET_OUT_SHARED_LIBRARIES)/libicuuc.so \
-    $(TARGET_OUT_SHARED_LIBRARIES)/libxml2.so \
-    $(TARGET_OUT_SHARED_LIBRARIES)/libkeymaster4.so \
-    $(TARGET_OUT_SHARED_LIBRARIES)/libkeymaster41.so \
-    $(TARGET_OUT_SHARED_LIBRARIES)/libpuresoftkeymasterdevice.so \
-    $(TARGET_OUT_SHARED_LIBRARIES)/libgatekeeper.so
-
-# Tools
-TW_INCLUDE_FB2PNG := true
-TW_INCLUDE_NTFS_3G := true
-TW_INCLUDE_REPACKTOOLS := true
-TW_INCLUDE_RESETPROP := true
-TW_INCLUDE_RESETPROP_SOURCE := true
-TW_INCLUDE_LIBRESETPROP := true
-TW_INCLUDE_LIBRESETPROP_SOURCE := true
+TW_LOAD_VENDOR_MODULES := $(shell echo \"$(shell ls $(DEVICE_PATH)/recovery/root/lib/modules) $(shell ls $(DEVICE_PATH)/recovery/root/vendor/lib/modules)\")
 
 # TWRP Configs
 TW_DEFAULT_BRIGHTNESS := 2047
@@ -264,96 +147,3 @@ TW_NO_CPU_TEMP := true
 TW_Y_OFFSET := 100
 TW_H_OFFSET := -100
 TW_DEVICE_VERSION := Poco_C75
-
-# OrangeFox Recovery specific flags
-OF_MAINTAINER := Henry20bak
-OF_USE_MAGISKBOOT := true
-OF_USE_MAGISKBOOT_FOR_ALL_PATCHES := true
-OF_DONT_PATCH_ENCRYPTED_DEVICE := true
-OF_NO_TREBLE_COMPATIBILITY_CHECK := true
-OF_NO_MIUI_PATCH_WARNING := true
-OF_SKIP_MULTIUSER_FOLDERS_BACKUP := true
-OF_UNBIND_SDCARD_F2FS := true
-OF_USE_GREEN_LED := 0
-
-# Touch Support
-TW_USE_LEGACY_TOUCH := false
-TW_NO_SCREEN_BLANK := true
-TW_NO_SCREEN_TIMEOUT := true
-
-# Driver and Hardware Support
-TARGET_RECOVERY_DEVICE_MODULES += \
-    libion \
-    vendor.mediatek.hardware.videotelephony@1.0 \
-    android.hardware.graphics.composer@2.1-impl
-
-TW_RECOVERY_ADDITIONAL_RELINK_LIBRARY_FILES += \
-    $(TARGET_OUT_SHARED_LIBRARIES)/libion.so \
-    $(TARGET_OUT_SHARED_LIBRARIES)/libandroidicu.so
-
-# Additional configurations for libinputflinger
-TARGET_RECOVERY_DEVICE_MODULES += \
-    libstatslog.vendor \
-    server_configurable_flags.vendor \
-    server_configurable_flags.inputflinger \
-    libinputflinger.vendor
-
-BOARD_RECOVERY_ADDITIONAL_RELINK_FILES += \
-    $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/libstatslog.vendor.so \
-    $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/server_configurable_flags.vendor.so \
-    $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/server_configurable_flags.inputflinger.so \
-    $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/libinputflinger.vendor.so
-
-# Additional linker configurations for libinputflinger
-SOONG_CONFIG_NAMESPACES += inputflinger
-SOONG_CONFIG_inputflinger += additional_libraries
-
-SOONG_CONFIG_inputflinger_additional_libraries := \
-    libstatslog:libstatslog.vendor \
-    server_configurable_flags:server_configurable_flags.vendor \
-    libinputflinger:libinputflinger.vendor
-
-# Enable stats logging for inputflinger
-SOONG_CONFIG_NAMESPACES += stats_log
-SOONG_CONFIG_stats_log += input_stats_log
-SOONG_CONFIG_stats_log_input_stats_log := true
-
-# Runtime paths for InputFlinger dependencies
-TARGET_RECOVERY_SYSTEM_LIBRARY_PATH += \
-    /vendor/lib64 \
-    /vendor/lib64/hw \
-    /system/lib64 \
-    /system/lib64/hw
-
-RECOVERY_LIBRARY_SOURCE_FILES += \
-    $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/libstatslog.vendor.so \
-    $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/server_configurable_flags.vendor.so \
-    $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/server_configurable_flags.inputflinger.so \
-    $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/libinputflinger.vendor.so
-
-RECOVERY_BINARY_SOURCE_FILES += \
-    $(TARGET_OUT_VENDOR_EXECUTABLES)/hw/vendor.inputflinger.service
-
-# InputFlinger service configuration
-BOARD_COPY_FILES += \
-    $(TARGET_OUT_VENDOR)/etc/init/vendor.inputflinger.rc:$(TARGET_COPY_OUT_RECOVERY)/root/system/etc/init/vendor.inputflinger.rc
-
-# InputFlinger permissions
-BOARD_COPY_FILES += \
-    frameworks/native/data/etc/android.hardware.touchscreen.multitouch.jazzhand.xml:$(TARGET_COPY_OUT_RECOVERY)/root/system/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml
-
-# InputFlinger service enablement
-ENABLE_INPUTFLINGER_SERVICE := true
-
-# MTK Hardware flags
-TARGET_USES_MTK_HARDWARE := true
-MTK_HARDWARE := true
-TARGET_RECOVERY_MTK_HARDWARE := true
-
-# MTK-specific flags
-TW_FORCE_USE_BUSYBOX := true
-TW_NEVER_UNMOUNT_SYSTEM := true
-TW_NO_USB_STORAGE := true
-TW_USE_MODEL_HARDWARE_ID_FOR_DEVICE_ID := true
-TW_INCLUDE_NTFS_3G := true
-TW_CUSTOM_CPU_TEMP_PATH := /sys/class/thermal/thermal_zone1/temp
