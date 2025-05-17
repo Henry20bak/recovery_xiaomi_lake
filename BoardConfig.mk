@@ -266,9 +266,10 @@ TARGET_RECOVERY_DEVICE_MODULES += \
     libinputflinger.vendor
 
 BOARD_RECOVERY_ADDITIONAL_RELINK_FILES += \
-    $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/libstatslog.so \
-    $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/server_configurable_flags.so \
-    $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/server_configurable_flags.inputflinger.so
+    $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/libstatslog.vendor.so \
+    $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/server_configurable_flags.vendor.so \
+    $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/server_configurable_flags.inputflinger.so \
+    $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/libinputflinger.vendor.so
 
 # Additional linker configurations for libinputflinger
 SOONG_CONFIG_NAMESPACES += inputflinger
