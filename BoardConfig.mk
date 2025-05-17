@@ -279,8 +279,9 @@ SOONG_CONFIG_NAMESPACES += inputflinger
 SOONG_CONFIG_inputflinger += additional_libraries
 
 SOONG_CONFIG_inputflinger_additional_libraries := \
-    libstatslog:libstatslog.vendor \
-    server_configurable_flags:server_configurable_flags.vendor
+    libstatslog.vendor \
+    server_configurable_flags.vendor \
+    server_configurable_flags.com.android.inputflinger
 
 # Additional Recovery Relink Files
 BOARD_RECOVERY_ADDITIONAL_RELINK_FILES += \
