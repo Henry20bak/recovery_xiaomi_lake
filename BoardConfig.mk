@@ -137,10 +137,6 @@ TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
 
 # Init
 TARGET_INIT_VENDOR_LIB := libinit_lake
-TARGET_RECOVERY_DEVICE_MODULES += \
-    libstatslog.vendor \
-    server_configurable_flags.vendor \
-    server_configurable_flags.inputflinger
 
 # Recovery
 BOARD_HAS_LARGE_FILESYSTEM := true
