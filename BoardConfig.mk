@@ -291,6 +291,17 @@ RECOVERY_LIBRARY_SOURCE_FILES += \
 RECOVERY_BINARY_SOURCE_FILES += \
     $(TARGET_OUT_VENDOR_EXECUTABLES)/hw/vendor.inputflinger.service
 
+# InputFlinger service configuration
+BOARD_COPY_FILES += \
+    $(TARGET_OUT_VENDOR)/etc/init/vendor.inputflinger.rc:$(TARGET_COPY_OUT_RECOVERY)/root/system/etc/init/vendor.inputflinger.rc
+
+# InputFlinger permissions
+BOARD_COPY_FILES += \
+    frameworks/native/data/etc/android.hardware.touchscreen.multitouch.jazzhand.xml:$(TARGET_COPY_OUT_RECOVERY)/root/system/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml
+
+# InputFlinger service enablement
+ENABLE_INPUTFLINGER_SERVICE := true
+
 # MTK Hardware flags
 TARGET_USES_MTK_HARDWARE := true
 MTK_HARDWARE := true
