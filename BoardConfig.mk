@@ -267,7 +267,7 @@ TW_RECOVERY_ADDITIONAL_RELINK_LIBRARY_FILES += \
 TARGET_RECOVERY_DEVICE_MODULES += \
     libstatslog.vendor \
     server_configurable_flags.vendor \
-    server_configurable_flags.com.android.inputflinger
+    server_configurable_flags.inputflinger
 
 BOARD_RECOVERY_ADDITIONAL_RELINK_FILES += \
     $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)/libstatslog.so \
