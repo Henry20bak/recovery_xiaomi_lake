@@ -246,12 +246,7 @@ TARGET_RECOVERY_DEVICE_MODULES += \
 
 TW_RECOVERY_ADDITIONAL_RELINK_LIBRARY_FILES += \
     $(TARGET_OUT_SHARED_LIBRARIES)/libion.so \
-    $(TARGET_OUT_SHARED_LIBRARIES)/libandroidicu.so \
-
-TARGET_RECOVERY_DEVICE_MODULES += \
-    libinputflinger \
-    libgui \
-    libtouchservice
+    $(TARGET_OUT_SHARED_LIBRARIES)/libandroidicu.so
 
 TW_RECOVERY_ADDITIONAL_RELINK_LIBRARY_FILES += \
     $(TARGET_OUT_SHARED_LIBRARIES)/libinputflinger.so \
