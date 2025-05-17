@@ -1,1 +1,8 @@
-.
+type vendor_inputflinger, domain;
+type vendor_inputflinger_exec, exec_type, vendor_file_type, file_type;
+
+init_daemon_domain(vendor_inputflinger)
+
+allow vendor_inputflinger input_device:chr_file rw_file_perms;
+allow vendor_inputflinger input_device:dir r_dir_perms;
+allow vendor_inputflinger self:capability { sys_nice };
